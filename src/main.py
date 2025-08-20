@@ -965,9 +965,11 @@ async def main() -> None:
             proxy_port = os.getenv('APIFY_PROXY_PORT', '8000')
             
             if proxy_password:
+                # Format: http://username:password@hostname:port
+                # Username can be 'auto' or custom with parameters like 'groups-SHADER+BUYPROXIES94952,session-123'
                 proxy_url = f"http://auto:{proxy_password}@{proxy_hostname}:{proxy_port}"
                 client_kwargs['proxies'] = proxy_url
-                Actor.log.info('Using Apify proxy for requests with session management')
+                Actor.log.info(f'Using Apify proxy: {proxy_hostname}:{proxy_port} with auto username')
             else:
                 Actor.log.warning('APIFY_PROXY_PASSWORD not found, proceeding without proxy')
                 Actor.log.info('Note: Apify Proxy requires authentication - check your proxy configuration')
