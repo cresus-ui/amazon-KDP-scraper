@@ -86,8 +86,7 @@
                 "useApifyProxy": {
                     "title": "Use Apify Proxy",
                     "type": "boolean",
-                    "description": "Use Apify's residential proxy service for better success rates",
-                    "default": true
+                    "description": "Use Apify's residential proxy service for better success rates"
                 },
                 "proxyUrls": {
                     "title": "Custom Proxy URLs",
