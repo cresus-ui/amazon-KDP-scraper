@@ -953,10 +953,19 @@ async def main() -> None:
         }
         
         if proxy_config.get('useApifyProxy'):
-            # Use Apify proxy format
-            proxy_url = "http://auto:@proxy.apify.com:8000"
-            client_kwargs['proxies'] = proxy_url
-            Actor.log.info('Using Apify proxy for requests with session management')
+            # Use Apify proxy format with proper authentication
+            import os
+            proxy_password = os.getenv('APIFY_PROXY_PASSWORD')
+            proxy_hostname = os.getenv('APIFY_PROXY_HOSTNAME', 'proxy.apify.com')
+            proxy_port = os.getenv('APIFY_PROXY_PORT', '8000')
+            
+            if proxy_password:
+                proxy_url = f"http://auto:{proxy_password}@{proxy_hostname}:{proxy_port}"
+                client_kwargs['proxies'] = proxy_url
+                Actor.log.info('Using Apify proxy for requests with session management')
+            else:
+                Actor.log.warning('APIFY_PROXY_PASSWORD not found, proceeding without proxy')
+                Actor.log.info('Note: Apify Proxy requires authentication - check your proxy configuration')
         elif proxy_config.get('proxyUrls'):
             proxy_url = proxy_config['proxyUrls'][0]
             client_kwargs['proxies'] = proxy_url
