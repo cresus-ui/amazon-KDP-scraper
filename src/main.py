@@ -952,6 +952,11 @@ async def main() -> None:
             'limits': httpx.Limits(max_keepalive_connections=5, max_connections=10)
         }
         
+        # Force Apify proxy usage if no proxy configuration is provided
+        if not proxy_config:
+            proxy_config = {'useApifyProxy': True}
+            Actor.log.info('No proxy configuration provided, automatically enabling Apify proxy')
+        
         if proxy_config.get('useApifyProxy'):
             # Use Apify proxy format with proper authentication
             import os

@@ -78,7 +78,10 @@
         "proxyConfiguration": {
             "title": "Proxy Configuration",
             "type": "object",
-            "description": "Select proxies to be used by your crawler.",
+            "description": "Proxy configuration (Apify proxy is automatically enabled for optimal performance).",
+            "default": {
+                "useApifyProxy": true
+            },
             "prefill": {
                 "useApifyProxy": true
             },
