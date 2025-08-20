@@ -50,7 +50,7 @@
         },
         "minRating": {
             "title": "Minimum Rating",
-            "type": "number",
+            "type": "integer",
             "description": "Minimum star rating to filter books (0-5). Only books with this rating or higher will be included.",
             "minimum": 0,
             "maximum": 5,
