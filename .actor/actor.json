@@ -1,0 +1,45 @@
+{
+    "actorSpecification": 1,
+    "name": "amazon-kdp-book-scraper",
+    "title": "Amazon KDP Book Scraper",
+    "description": "Extract comprehensive book data from Amazon KDP including titles, authors, prices, ratings, reviews, and detailed product information. Supports search terms and direct product URLs with advanced filtering options.",
+    "version": "1.0.0",
+    "meta": {
+        "templateId": "python-beautifulsoup",
+        "isPublic": true,
+        "isDeprecated": false
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile",
+    "readme": "./README.md",
+    "categories": ["ECOMMERCE", "ENTERTAINMENT"],
+    "defaultRunOptions": {
+        "build": "latest",
+        "timeoutSecs": 3600,
+        "memoryMbytes": 2048
+    },
+    "stats": {
+        "supportedRequestsPerMinute": 120,
+        "supportedRequestsPerHour": 5000
+    },
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Amazon KDP Books",
+            "views": {
+                "overview": {
+                    "title": "Overview",
+                    "transformation": {
+                        "fields": ["title", "author", "price", "rating", "url"]
+                    }
+                },
+                "details": {
+                    "title": "Detailed View",
+                    "transformation": {
+                        "fields": ["title", "author", "price", "listPrice", "rating", "reviewCount", "availability", "publisher", "publicationDate", "isbn", "url"]
+                    }
+                }
+            }
+        }
+    }
+}

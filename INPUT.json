@@ -1,0 +1,8 @@
+{
+  "searchTerms": ["python programming"],
+  "maxResults": 5,
+  "includeReviews": false,
+  "minRating": 0,
+  "sortBy": "relevance",
+  "requestDelay": 3
+}
