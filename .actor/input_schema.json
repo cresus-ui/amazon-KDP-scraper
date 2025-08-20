@@ -78,25 +78,11 @@
         "proxyConfiguration": {
             "title": "Proxy Configuration",
             "type": "object",
-            "description": "Proxy settings for requests. Recommended for large-scale scraping.",
+            "description": "Select proxies to be used by your crawler.",
             "prefill": {
                 "useApifyProxy": true
             },
-            "properties": {
-                "useApifyProxy": {
-                    "title": "Use Apify Proxy",
-                    "type": "boolean",
-                    "description": "Use Apify's residential proxy service for better success rates"
-                },
-                "proxyUrls": {
-                    "title": "Custom Proxy URLs",
-                    "type": "array",
-                    "description": "List of custom proxy URLs (format: http://username:password@proxy:port)",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
+            "editor": "proxy"
         },
         "extendOutputFunction": {
             "title": "Extend Output Function",
