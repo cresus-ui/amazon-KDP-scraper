@@ -966,7 +966,10 @@ async def main() -> None:
             
             if proxy_password:
                 # Format: http://username:password@hostname:port
-                # Username can be 'auto' or custom with parameters like 'groups-SHADER+BUYPROXIES94952,session-123'
+                # Exemple concret: http://groups-SHADER+BUYPROXIES94952,session-123:apify_proxy_[YOUR_TOKEN]@proxy.apify.com:8000
+                # Hostname: proxy.apify.com, Port: 8000
+                # Username: groups-SHADER+BUYPROXIES94952,session-123 (avec paramètres de groupe et session)
+                # Password: apify_proxy_[YOUR_TOKEN] (remplacez par votre token Apify)
                 proxy_url = f"http://auto:{proxy_password}@{proxy_hostname}:{proxy_port}"
                 client_kwargs['proxies'] = proxy_url
                 Actor.log.info(f'Using Apify proxy: {proxy_hostname}:{proxy_port} with auto username')
